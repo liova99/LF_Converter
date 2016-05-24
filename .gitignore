@@ -1,0 +1,10 @@
+back_up/
+
+build/
+
+venv/
+
+
+*.bat
+
+*.py
