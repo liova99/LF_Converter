@@ -1,10 +1,9 @@
-back_up/
 
-build/
+.idea/
 
-venv/
-
+.venv/
 
 *.bat
 
-*.py
+.setup.py
+
