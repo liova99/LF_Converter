@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Java Basics</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; display: inline-block;
+                             background-color: #efefef;
+                             padding:0.2em 2em;
+                             border-radius: 5px;
+                             margin-left:3em;}
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Java Basics</h1>
+</div>
+<h1 id="useful-intellij-idea-shurtcuts">Useful intellij idea shurtcuts</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">sout - just print System.<span class="fu">out</span>.<span class="fu">println</span>()
+
+soutm - added Class name &amp; method name
+
+soutp - added parameter
+
+soutv - added last variable name</code></pre></div>
+<h1 id="hello-world">Hello World</h1>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">package test;</span>
+
+<span class="kw">class</span> helloworld {
+
+<span class="co">// This is Java&#39;s built-in main method! </span>
+        <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String args[]){
+            System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;hello World&quot;</span>);
+            <span class="dt">double</span> tuna;
+            tuna = <span class="fl">5.28</span>;
+            System.<span class="fu">out</span>.<span class="fu">print</span>(tuna);
+    }</code></pre></div>
+<p>System.out.println will print the next print on a new line where System.out.print will print at the same line.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">System.<span class="fu">out</span>.<span class="fu">print</span>(&#39;Levan is &#39;);
+System.<span class="fu">out</span>.<span class="fu">println</span>(&#39;Great&#39;);
+System.<span class="fu">out</span>.<span class="fu">print</span>(&#39;man&#39;);
+<span class="co">// -------Console--------- //</span>
+Levan is Great
+man</code></pre></div>
+</body>
+</html>

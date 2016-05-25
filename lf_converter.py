@@ -1,69 +1,92 @@
-import subprocess 
+import subprocess
 import fileinput
+from time import sleep
+
+def menu():
+    menu_item = input('''
+
+    MENU [1]
+    MENU [2]
+    MENU [3]
+
+    ''')
+
 
 def file_name():
-	global file_name
-	file_name = input("""Enter the markdown file name
-	 without the extension (e.x. 'my_code_file') >>>  """)
-	return  file_name
+    global file_name
+    file_name = input("""
+    Copy your file at the same location as the LF_converter.exe
+    Enter the markdown file name
+    without the extension (e.x. 'my_code_file')
+    >>> """)
+    return file_name
 
 def to_rst():
-	cmd_to_rst = ("pandoc " + file_name + ".md -f markdown_strict -s -o " + file_name +".rst")
-	print (cmd_to_rst)
-	# to rst
-	subprocess.call(cmd_to_rst , shell = True)
-	print("File ready")
+    make_dir = "mkdir rst"
+    cmd_to_rst = ("pandoc %s.md -f markdown_strict  -s -o rst\%s.rst" %(file_name, file_name))
+    cmds = [make_dir, cmd_to_rst]
+
+    for cmd in cmds:
+        subprocess.call(cmd , shell = True)
+    print("rst file ready")
+    print("Adding text highlighting...")
+    sleep(1)
 
 
 def update_rst():
-	file = file_name + ".rst"
-	# the "r" before the path is for the \ escape character, or unicode
-	f1 = open(file, 'r+')
+    file_rst = "rst\%s.rst" % file_name
+    f1 = open(file_rst, 'r+')
 
-	for line in fileinput.FileInput(file):
-	    line = line.replace('::', '.. code:: java' )
+    for line in fileinput.FileInput(file_rst):
+        line = line.replace('::', '.. code:: java')
 
-	    f1.write(line,)
-	f1.close()    
+        f1.write(line, )
+    f1.close()
 
-	print ("rst file updated")
+    print("rst file updated")
 
 
 def update_css():
-	ask = input ("Do you want to create a html file??  ")
+    while True:
+        ask = input("Do you want to create a html file?? Y/N ")
+        if ask == 'Y':
+            break
+        elif ask == 'N':
+            input('Pres Enter to exit... ')
+            exit(1)
+        else:
+            "please answer with 'Y' or 'N' (Yes or No) "
+            continue
 
-	cmd_to_html = ("pandoc " + file_name + ".rst  -s -o " + file_name +".html")
-	print (cmd_to_html)
-	# to rst
-	subprocess.call(cmd_to_html , shell = True)
-	print("html File ready")
-	print(" Updating CSS for text hight lighting")
+    make_dir = ("mkdir html")
+    cmd_to_html = ("pandoc rst\%s.rst  -s -o html\%s.html" %(file_name, file_name))
 
+    cmds = [make_dir, cmd_to_html]
+    for cmd in cmds:
+        subprocess.call(cmd, shell = True)
+    print("html File ready")
+    print("Updating CSS...")
+    sleep(2)
+    file = "html\%s.html" %file_name
+    # the "r" before the path is for the \ escape character, or unicode
+    f1 = open(file, 'r+')
 
+    for line in fileinput.FileInput(file):
+        line = line.replace('div.sourceCode { overflow-x: auto; }', '''div.sourceCode { overflow-x: auto; display: inline-block;
+                             background-color: #efefef;
+                             padding:0.2em 2em;
+                             border-radius: 5px;
+                             margin-left:3em;}''')
 
-	file = file_name + ".html"
-	# the "r" before the path is for the \ escape character, or unicode
-	f1 = open(file, 'r+')
+        f1.write(line, )
+    f1.close()
 
-	for line in fileinput.FileInput(file):
-	    line = line.replace('div.sourceCode { overflow-x: auto; }', '''div.sourceCode { overflow-x: auto; display: inline-block; 
-						     background-color: #efefef; 
-						     padding:0.2em 2em;
-						     border-radius: 5px;
-						     margin-left:3em;}''' )
-
-	    f1.write(line,)
-	f1.close()    
-
-	print ("CSS Updated")
-
-
-
+    print("CSS Updated")
+    input("press Enter to exit... ")
 
 
 if __name__ == "__main__":
-	file_name()
-	to_rst()
-	update_rst()
-	update_css()
-	
+    file_name()
+    to_rst()
+    update_rst()
+    update_css()
