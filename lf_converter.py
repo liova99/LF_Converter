@@ -1,6 +1,8 @@
 import subprocess
 import fileinput
 from time import sleep
+from tkinter import *
+from tkinter.filedialog import askopenfilename
 
 def menu():
     menu_item = input('''
@@ -12,14 +14,29 @@ def menu():
     ''')
 
 
+
 def file_name():
     global file_name
-    file_name = input("""
-    Copy your file at the same location as the LF_converter.exe
-    Enter the markdown file name
-    without the extension (e.x. 'my_code_file')
-    >>> """)
+    root = Tk()
+    # file_name = input("""
+    # Copy your file at the same location as the LF_converter.exe
+    # Enter the markdown file name
+    # without the extension (e.x. 'my_code_file')
+    # >>> """)
+    the_label = Label(root, text = "This is Label")
+
+    file_name = askopenfilename(title = "Choose a file")
+
+    Button(text = 'File Open', command = file_name).pack(fill = X)
+
+
+    the_label.pack()
+    file_name.pack()
+    root.mainloop()
+
     return file_name
+
+
 
 def to_rst():
     make_dir = "mkdir rst"
@@ -87,6 +104,7 @@ def update_css():
 
 if __name__ == "__main__":
     file_name()
-    to_rst()
-    update_rst()
-    update_css()
+#    mainloop()
+    # to_rst()
+    # update_rst()
+    # update_css()
